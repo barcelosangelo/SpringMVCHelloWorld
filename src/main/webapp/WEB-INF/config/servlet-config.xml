@@ -9,11 +9,39 @@
         <mvc:annotation-driven/>
         <context:component-scan base-package="org.academiadecodigo.bootcamp.controller"/>
 
+        <bean id="userServiceImpl" class="org.academiadecodigo.bootcamp.Service.MockUserService"/>
         <!-- configure the view resolver -->
         <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
             <property name="prefix" value="/WEB-INF/jsp/"/>
             <property name="suffix" value=".jsp"/>
         </bean>
+    <bean id="user1" class="org.academiadecodigo.bootcamp.Model.User">
+
+    </bean>
+
+    <bean id="userService" class="org.academiadecodigo.bootcamp.Service.MockUserService">
+        <property name="users">
+            <map>
+                <entry key="angelobarcelos">
+                <bean class="org.academiadecodigo.bootcamp.Model.User" >
+                    <property name="username" value="angelobarcelos"/>
+                    <property name="password" value="angelobarcelos"/>
+                    <property name="email" value="barcelos.angelo.com"/>
+                </bean>
+                </entry>
+                <entry key="carinavieira">
+                    <bean class="org.academiadecodigo.bootcamp.Model.User">
+                        <property name="username" value="carinavieira"/>
+                        <property name="password" value="carinavieira"/>
+                        <property name="email" value="vieira.m.carina@gmail.com"/>
+                    </bean>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+
+
 
 
 

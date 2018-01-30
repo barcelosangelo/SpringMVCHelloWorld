@@ -1,0 +1,9 @@
+org/academiadecodigo/bootcamp/Model/BootCamp.class
+org/academiadecodigo/bootcamp/Service/MockBootcampService.class
+org/academiadecodigo/bootcamp/Service/MockUserService.class
+org/academiadecodigo/bootcamp/Service/test.class
+org/academiadecodigo/bootcamp/controller/LoginController.class
+org/academiadecodigo/bootcamp/controller/HelloController.class
+org/academiadecodigo/bootcamp/Model/User.class
+org/academiadecodigo/bootcamp/Service/UserService.class
+org/academiadecodigo/bootcamp/Service/BootcampService.class

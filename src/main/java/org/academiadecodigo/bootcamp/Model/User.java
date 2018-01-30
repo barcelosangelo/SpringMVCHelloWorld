@@ -1,9 +1,21 @@
 package org.academiadecodigo.bootcamp.Model;
 
+import org.hibernate.validator.constraints.NotBlank;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
 public class User {
 
-    private Integer id;
+    @NotNull(message = "username is mandatory")
+    @NotBlank(message = "username is mandatory")
+    @Pattern(regexp = "[a-z-A-Z]", message = "username has invalide characters")
     private String username;
+
+    private Integer id;
+    @NotNull
+    @NotBlank
+
     private String password;
     private String email;
 
@@ -15,6 +27,8 @@ public class User {
         this.email = email;
     }
 
+    public User() {
+    }
 
     public Integer getId() {
         return id;
@@ -46,5 +60,15 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

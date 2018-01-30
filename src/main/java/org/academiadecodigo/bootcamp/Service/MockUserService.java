@@ -1,20 +1,19 @@
-package org.academiadecodigo.bootcamp.UserService;
+package org.academiadecodigo.bootcamp.Service;
 
 import org.academiadecodigo.bootcamp.Model.User;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class MockUserService implements UserService {
 
-private Map<String,User> userMap = new HashMap<>();
-    private Map userMap;
+    private Map<String, User> users;
 
     @Override
     public boolean authenticate(String username, String password) {
 
         User user = findByName(username);
-        if (user != null && user.getPassword().equals(password)){
+
+        if (user != null && user.getPassword().equals(password)) {
             return true;
         } else {
             return false;
@@ -24,14 +23,14 @@ private Map<String,User> userMap = new HashMap<>();
 
     @Override
     public User findByName(String username) {
-        return userMap.get(username);
+        return users.get(username);
 
 
     }
 
     @Override
     public void addUser(User user) {
-    userMap.put(user.getUsername(),user);
+        users.put(user.getUsername(), user);
 
     }
 
@@ -40,12 +39,11 @@ private Map<String,User> userMap = new HashMap<>();
         return 0;
     }
 
-
-    public void setUserMap(Map userMap) {
-        this.userMap = userMap;
+    public Map<String, User> getUsers() {
+        return users;
     }
 
-    public Map getUserMap() {
-        return userMap;
+    public void setUsers(Map<String, User> users) {
+        this.users = users;
     }
 }

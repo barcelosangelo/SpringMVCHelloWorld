@@ -2,7 +2,7 @@ package org.academiadecodigo.bootcamp.controller;
 
 
 import org.academiadecodigo.bootcamp.Model.User;
-import org.academiadecodigo.bootcamp.UserService.UserService;
+import org.academiadecodigo.bootcamp.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,14 +21,18 @@ public class LoginController {
     public ModelAndView showLogin(){
 
         ModelAndView modelAndView = new ModelAndView("login");
-        modelAndView.addObject("user",new User);
+        modelAndView.addObject("user",new User());
         return modelAndView;
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/login")
     public String doLogin(Model model, @ModelAttribute("user") User user) {
 
+        System.out.println(user.getUsername() + " | " + user.getPassword());
+        System.out.println(userService.authenticate(user.getUsername(), user.getPassword()));
+
         if (user.getUsername() == null || user.getUsername().isEmpty() || user.getPassword() == null || user.getPassword().isEmpty()) {
+            model.addAttribute("error", "Empty Fields");
             return "login";
         }
 
@@ -42,5 +46,11 @@ public class LoginController {
         }
 
     }
+
+   /* @RequestMapping(method = RequestMethod.PUT, value = "/Register")
+        public String doRegister(Model model, @ModelAttribute("user")User user){
+
+
+    }*/
 
 }
