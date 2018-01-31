@@ -9,9 +9,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+@SessionAttributes("loginUser")
 public class LoginController {
 
     @Autowired
@@ -25,8 +27,8 @@ public class LoginController {
         return modelAndView;
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/login")
-    public String doLogin(Model model, @ModelAttribute("user") User user) {
+    @RequestMapping(method = RequestMethod.POST, value = "/")
+    public String doLogin(Model model, @ModelAttribute("loginUser") User user) {
 
         System.out.println(user.getUsername() + " | " + user.getPassword());
         System.out.println(userService.authenticate(user.getUsername(), user.getPassword()));
@@ -38,7 +40,7 @@ public class LoginController {
 
         if (userService.authenticate(user.getUsername(), user.getPassword())) {
             model.addAttribute("greeting", "Welcome");
-            return "main";
+            return "redirect:/bootcamps";
 
         } else {
             model.addAttribute("error", "Authentication Failure");
@@ -47,10 +49,5 @@ public class LoginController {
 
     }
 
-   /* @RequestMapping(method = RequestMethod.PUT, value = "/Register")
-        public String doRegister(Model model, @ModelAttribute("user")User user){
-
-
-    }*/
 
 }
