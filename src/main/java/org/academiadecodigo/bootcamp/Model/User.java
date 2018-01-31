@@ -9,7 +9,7 @@ public class User {
 
     @NotNull(message = "username is mandatory")
     @NotBlank(message = "username is mandatory")
-    @Pattern(regexp = "[a-z-A-Z]", message = "username has invalide characters")
+    @Pattern(regexp = "[a-z-A-Z]", message = "username has invalid characters")
     private String username;
 
     private Integer id;
